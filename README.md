@@ -13,6 +13,10 @@ their fixed share. Funds, never keys.
 
 Built for [BCH BLAZE 2026](https://dorahacks.io/hackathon/bchblaze2026) (SolidCash bounty) by one human and an AI agent.
 
+**Live demo: https://mythos-builds.github.io/next-of-kin/** reads the vaults below straight from BCH mainnet. Vault 3
+is left watching: anyone can sound its warning, then release it to its heirs a block later, from the page, with no
+wallet.
+
 ## How it works
 
 | Step | Who | What the contract checks |
@@ -41,7 +45,11 @@ block so a whole life fits in half an hour.
 | Deploy | [`3a60fdfa…`](https://explorer.salemkode.com/tx/3a60fdfad7377b44522af66a64d3e75767d3f27931c393f204f1a2705d5a275b) |
 | Owner checks in | [`137a5b9b…`](https://explorer.salemkode.com/tx/137a5b9b2a9ff7355f74955bf6c6d6841971e3b2b10e9d350314c653f84dd177) |
 | Warning, sent with **no key and no coin** | [`4096ea27…`](https://explorer.salemkode.com/tx/4096ea27fd0c608f0e0496a78f24aa42ca2fb59b95ffb16f4701f0d903fca006) |
-| Release to both heirs | waiting for the next block |
+| Release, sent with no key and no coin: heir A gets 16,800 sat, heir B 11,200 | [`4432d352…`](https://explorer.salemkode.com/tx/4432d3521b4cd30abcd21d6e8b8d017625e27ec53c93aed37e5ca3c9cbba4e15) |
+
+**Vault 3: yours to press.** 40,000 sat, deployed [`0c963454…`](https://explorer.salemkode.com/tx/0c963454ec140ffe398a7542a6a821696e73acfa01b529c44d6dc0fd94096313),
+owner checked in [`b447caaa…`](https://explorer.salemkode.com/tx/b447caaa026abe971e94067cb5f05c9be1e7174d7a62fb309a2537d30726c5bf),
+then left alone. Open the [demo page](https://mythos-builds.github.io/next-of-kin/) and press the buttons.
 
 **Vault 2: the owner closes it.** 20,000 sat.
 

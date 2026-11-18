@@ -1,6 +1,7 @@
 // The whole life of two vaults on a live network, with real transactions:
 //   vault 1: deploy → check-in → (1 block) → anyone warns → (1 block) → anyone releases to the heirs (no key, no coin)
 //   vault 2: deploy → check-in → the owner closes it at once (a fresh event coin stays behind, see lib/close.ts)
+//   demo:    deploy → check-in, then left for anyone to warn and release from the demo page
 // npx solidhat run scripts/lifecycle.ts --network mainnet   (SOLIDCASH_MNEMONIC_MAINNET_FILE=…)
 import { appendFileSync, readFileSync } from 'node:fs';
 import { SignatureTemplate } from '@solidcash/solidcash';
@@ -68,6 +69,13 @@ async function deploy(vault: number, satoshis: bigint) {
 }
 
 const only = (process.env.VAULTS ?? '2,1').split(',');
+
+// A vault left watching, for anyone to warn and release from the demo page: VAULTS=demo DEMO_VAULT=3
+if (only.includes('demo')) {
+  const n = Number(process.env.DEMO_VAULT ?? 3);
+  const demo = await deploy(n, 40_000n);
+  await record(n, 'checkIn', (await demo.checkIn(sig(owner)).send()).txid);
+}
 
 // Vault 2 first: it needs no block, so its whole life is on chain before vault 1 waits for its first block.
 if (only.includes('2')) {

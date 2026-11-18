@@ -69,6 +69,42 @@
      "txid": "4096ea27fd0c608f0e0496a78f24aa42ca2fb59b95ffb16f4701f0d903fca006",
      "at": "2026-11-18T19:50:39.490Z",
      "by": "nobody (no key, no coin)"
+    },
+    {
+     "step": "release",
+     "txid": "4432d3521b4cd30abcd21d6e8b8d017625e27ec53c93aed37e5ca3c9cbba4e15",
+     "at": "2026-11-18T20:09:57.639Z",
+     "by": "nobody (no key, no coin)"
+    }
+   ]
+  },
+  {
+   "vault": 3,
+   "category": "4a13fa00fab43922d733d91a9c0e0e0415dc6011c589d11f6a94d08609268c38",
+   "sats": "40000",
+   "args": {
+    "owner": "03ea49aabd8a4c3bc53030289a121b32a87d4192143b87a25dd9229a554d6c39f1",
+    "heirA": "aa2a055a5f8a04544781e218cc25d376f37f0612",
+    "heirB": "339c8ce85029fb69f83f3b9a7245594a980e364f",
+    "shareA": 60,
+    "silence": 1,
+    "grace": 1
+   },
+   "addresses": {
+    "owner": "bitcoincash:qz4kcs0hq9tc5cv40ngg04wmzxrttxfcq54fvtlyyd",
+    "heirA": "bitcoincash:qz4z5p26t79qg4z8s83p3np96dm0xlcxzgmtnjdkj0",
+    "heirB": "bitcoincash:qqeeer8g2q5lk60c8uae5uj9t99fsr3kfunjzkl9x2"
+   },
+   "history": [
+    {
+     "step": "deploy",
+     "txid": "0c963454ec140ffe398a7542a6a821696e73acfa01b529c44d6dc0fd94096313",
+     "at": "2026-11-18T20:09:31.702Z"
+    },
+    {
+     "step": "checkIn",
+     "txid": "b447caaa026abe971e94067cb5f05c9be1e7174d7a62fb309a2537d30726c5bf",
+     "at": "2026-11-18T20:09:36.787Z"
     }
    ]
   }
