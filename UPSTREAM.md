@@ -62,7 +62,8 @@ What building Next of Kin on SolidCash 0.51.1 ran into, with where it lives upst
   `selectGenesisFundingUtxo(…, poolSatoshis)` without `overrides.initialBalance`; the selection then takes the
   freshest vout-0 coin that covers the records and fee only, and the deployment spends that coin alone.
 - **Here:** [`scripts/lifecycle.ts`](scripts/lifecycle.ts) names the largest vout-0 coin as `fundingUtxo`.
-- **Upstream fix:** add the initial balance to the floor passed to `selectGenesisFundingUtxo`.
+- **Upstream fix:** [solidcash/solidcash#11](https://github.com/solidcash/solidcash/pull/11) (ours) adds the initial
+  balance to the floor passed to `selectGenesisFundingUtxo`, with a regression test.
 
 ## F9 · A vault-paid call is refused for a caller with no coin
 

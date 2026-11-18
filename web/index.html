@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Next of Kin</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Ccircle cx=%2216%22 cy=%2216%22 r=%2213%22 fill=%22none%22 stroke=%22%230f6b4f%22 stroke-width=%223%22/%3E%3Cpath d=%22M16 8v8l5 3%22 fill=%22none%22 stroke=%22%230f6b4f%22 stroke-width=%223%22 stroke-linecap=%22round%22/%3E%3C/svg%3E">
+<meta name="description" content="A dead man's switch for Bitcoin Cash, in SolidCash, live on mainnet.">
+<style>
+  :root {
+    --bg: #faf8f4; --fg: #1d1b18; --muted: #6b665d; --line: #e4dfd5; --card: #ffffff;
+    --accent: #0f6b4f; --warn: #a05a00; --done: #3b4fa0; --closed: #6b665d;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #141311; --fg: #ece8e1; --muted: #a59f94; --line: #2c2a26; --card: #1c1b18;
+      --accent: #4fc39a; --warn: #f0a93b; --done: #8fa2f0; --closed: #a59f94; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 32px 16px 56px; }
+  h1 { font-size: 2.1rem; margin: 0 0 4px; letter-spacing: -0.01em; }
+  .tagline { font-size: 1.2rem; margin: 0 0 24px; color: var(--muted); }
+  h2 { font-size: 1.15rem; margin: 36px 0 12px; }
+  ol.steps { padding-left: 1.3em; margin: 0; }
+  ol.steps li { margin: 6px 0; }
+  .vault { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px; margin: 14px 0; }
+  .head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .head h3 { margin: 0; font-size: 1.05rem; }
+  .badge { font-size: .85rem; font-weight: 600; padding: 2px 10px; border-radius: 999px; border: 1px solid currentColor; }
+  .badge.watching { color: var(--accent); } .badge.warned { color: var(--warn); }
+  .badge.released { color: var(--done); } .badge.closed { color: var(--closed); }
+  dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 16px; margin: 12px 0; }
+  dt { color: var(--muted); } dd { margin: 0; overflow-wrap: anywhere; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 12px 0; }
+  button { font: inherit; padding: 9px 16px; border-radius: 8px; border: 1px solid var(--accent); background: var(--accent);
+    color: var(--bg); cursor: pointer; min-height: 44px; }
+  button:disabled { background: transparent; color: var(--muted); border-color: var(--line); cursor: not-allowed; }
+  button:focus-visible, a:focus-visible { outline: 3px solid var(--warn); outline-offset: 2px; }
+  ol.history { margin: 8px 0 0; padding-left: 1.3em; color: var(--muted); font-size: .95rem; }
+  ol.history a { color: inherit; }
+  .hint { margin: 0 0 8px; color: var(--muted); font-size: .95rem; }
+  .note { margin: 8px 0 0; font-size: .95rem; overflow-wrap: anywhere; }
+  a { color: var(--accent); }
+  footer { margin-top: 40px; color: var(--muted); font-size: .9rem; }
+  code { font-size: .92em; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Next of Kin</h1>
+  <p class="tagline">Crypto has no next of kin. Now it does.</p>
+  <p>A dead man's switch for Bitcoin Cash, written in <a href="https://github.com/solidcash/solidcash">SolidCash</a> and
+    running on mainnet. The owner's coins wait in a contract; the owner checks in now and then. If they go quiet, anyone
+    can sound the warning, and if they still say nothing, anyone can release the coins: the contract pays each heir their
+    share. Funds, never keys.</p>
+
+  <h2>How it works</h2>
+  <ol class="steps">
+    <li><strong>Check in.</strong> Only the owner can. Each check-in re-spends the vault's state coin, so the coin's own
+      age is the clock.</li>
+    <li><strong>Warn.</strong> Anyone, once the owner has been silent for <code>silence</code> blocks. The network itself
+      refuses an early warning.</li>
+    <li><strong>Release.</strong> Anyone, <code>grace</code> blocks after the warning, if the owner did not check in. The
+      contract pays heir A and heir B their shares, to the satoshi.</li>
+    <li><strong>Close.</strong> The owner can take everything back at any time.</li>
+  </ol>
+
+  <h2>The vaults on mainnet</h2>
+  <p id="server">Connecting to a BCH server…</p>
+  <p>These demo vaults use one block for both clocks. Their heirs are our own test keys. The buttons work for anyone,
+    with no wallet: the vault pays the network fee.</p>
+  <div id="vaults"></div>
+
+  <footer>
+    <p><a href="https://github.com/mythos-builds/next-of-kin">Code, tests and findings</a> · MIT · built for BCH BLAZE
+      2026 by one human and an AI agent. A demo, not audited: don't put savings in it.</p>
+  </footer>
+</main>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

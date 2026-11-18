@@ -1,0 +1,76 @@
+{
+ "network": "mainnet",
+ "vaults": [
+  {
+   "vault": 2,
+   "category": "08fa14d562f095e483681c3b6e5fabdfa1c0c0dafb3b093a85d5a01867dbbbe5",
+   "sats": "20000",
+   "args": {
+    "owner": "03ea49aabd8a4c3bc53030289a121b32a87d4192143b87a25dd9229a554d6c39f1",
+    "heirA": "aa2a055a5f8a04544781e218cc25d376f37f0612",
+    "heirB": "339c8ce85029fb69f83f3b9a7245594a980e364f",
+    "shareA": 60,
+    "silence": 1,
+    "grace": 1
+   },
+   "addresses": {
+    "owner": "bitcoincash:qz4kcs0hq9tc5cv40ngg04wmzxrttxfcq54fvtlyyd",
+    "heirA": "bitcoincash:qz4z5p26t79qg4z8s83p3np96dm0xlcxzgmtnjdkj0",
+    "heirB": "bitcoincash:qqeeer8g2q5lk60c8uae5uj9t99fsr3kfunjzkl9x2"
+   },
+   "history": [
+    {
+     "step": "deploy",
+     "txid": "0a9a3650ca97d11b6848b4c4d3e7c0d47ef521eeda45673404d258b455a6f3c6",
+     "at": "2026-11-18T19:46:13.421Z"
+    },
+    {
+     "step": "checkIn",
+     "txid": "0675e78e1f7916fae5d0b3477070d4a72a41987c08e585c887efa63456bc4851",
+     "at": "2026-11-18T19:46:18.183Z"
+    },
+    {
+     "step": "close",
+     "txid": "7036aeec196748be4062a48f2c31bdccf057ab0febbb7573de9eaccff82fc96c",
+     "at": "2026-11-18T19:46:27.477Z"
+    }
+   ]
+  },
+  {
+   "vault": 1,
+   "category": "9dc5bcaea54cf13f8835051bd742e665fc6d9403a10638f41bfceb4da2639145",
+   "sats": "40000",
+   "args": {
+    "owner": "03ea49aabd8a4c3bc53030289a121b32a87d4192143b87a25dd9229a554d6c39f1",
+    "heirA": "aa2a055a5f8a04544781e218cc25d376f37f0612",
+    "heirB": "339c8ce85029fb69f83f3b9a7245594a980e364f",
+    "shareA": 60,
+    "silence": 1,
+    "grace": 1
+   },
+   "addresses": {
+    "owner": "bitcoincash:qz4kcs0hq9tc5cv40ngg04wmzxrttxfcq54fvtlyyd",
+    "heirA": "bitcoincash:qz4z5p26t79qg4z8s83p3np96dm0xlcxzgmtnjdkj0",
+    "heirB": "bitcoincash:qqeeer8g2q5lk60c8uae5uj9t99fsr3kfunjzkl9x2"
+   },
+   "history": [
+    {
+     "step": "deploy",
+     "txid": "3a60fdfad7377b44522af66a64d3e75767d3f27931c393f204f1a2705d5a275b",
+     "at": "2026-11-18T19:47:56.966Z"
+    },
+    {
+     "step": "checkIn",
+     "txid": "137a5b9b2a9ff7355f74955bf6c6d6841971e3b2b10e9d350314c653f84dd177",
+     "at": "2026-11-18T19:48:01.982Z"
+    },
+    {
+     "step": "warn",
+     "txid": "4096ea27fd0c608f0e0496a78f24aa42ca2fb59b95ffb16f4701f0d903fca006",
+     "at": "2026-11-18T19:50:39.490Z",
+     "by": "nobody (no key, no coin)"
+    }
+   ]
+  }
+ ]
+}
