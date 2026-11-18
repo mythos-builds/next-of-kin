@@ -1,0 +1,1 @@
+import{i as e}from"./hex-BbJA31Yr.js";import{ot as t,q as n}from"./dist-CwRv-Ohh.js";import{x as r}from"./utils-D4ilNWLO.js";function i(i,a,o=!1){let s=t(a,o);return r(n(e(i),s),`p2sh32`)}function a(e,t){let n=e;for(let e=1;;e+=1){let r=t(e);if(r===void 0||r===``)return n;n+=r}}export{a as n,i as t};

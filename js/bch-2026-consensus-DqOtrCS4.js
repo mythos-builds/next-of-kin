@@ -1,0 +1,1 @@
+import{t as e}from"./bch-2025-consensus-D25rj3hq.js";const t={baseInstructionCost:100,maximumFunctionIdentifierLength:7,maximumMemorySlots:1e3,maximumStandardLockingBytecodeLength:201,maximumStandardUnlockingBytecodeLength:1e4,maximumTokenCommitmentLength:128},n={...e,...t};export{n as t};

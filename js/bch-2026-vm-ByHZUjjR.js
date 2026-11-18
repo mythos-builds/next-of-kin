@@ -1,0 +1,1 @@
+import{i as e}from"./bch-2025-instruction-set-rdcjU8z6.js";import{t}from"./bch-2026-instruction-set-BSD6952C.js";const n=(n=!0)=>e(t(n));export{n as t};

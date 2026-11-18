@@ -1,0 +1,1 @@
+import{t as e}from"./TransactionBuilder-DKBqvTsj.js";var t=class extends e{constructor(){super(...arguments),this.enforceFeeCaps=!1}checkMaxFee(e){this.enforceFeeCaps&&super.checkMaxFee(e)}};export{t};
