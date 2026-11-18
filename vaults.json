@@ -69,6 +69,12 @@
      "txid": "4096ea27fd0c608f0e0496a78f24aa42ca2fb59b95ffb16f4701f0d903fca006",
      "at": "2026-11-18T19:50:39.490Z",
      "by": "nobody (no key, no coin)"
+    },
+    {
+     "step": "release",
+     "txid": "4432d3521b4cd30abcd21d6e8b8d017625e27ec53c93aed37e5ca3c9cbba4e15",
+     "at": "2026-11-18T20:09:57.639Z",
+     "by": "nobody (no key, no coin)"
     }
    ]
   },
