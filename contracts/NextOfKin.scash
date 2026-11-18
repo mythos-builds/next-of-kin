@@ -1,0 +1,66 @@
+pragma solidcash ^0.51.0;
+
+// Crypto has no next of kin. Now it does.
+// The owner's coins wait in this contract. Each check-in (the owner's signature) re-spends the contract's state coin,
+// so the coin's own age is the clock. After `silence` blocks with no check-in, anyone may sound the warning; during
+// `grace` blocks a check-in cancels it; after that, anyone may release the coins to the two heirs, by fixed shares.
+// Funds, never keys: nobody else ever holds a key to the owner's coins.
+
+enum Phase { Watching, Warned, Released }
+
+error NotOwner();
+error WrongPhase(Phase phase);
+
+contract NextOfKin(pubkey owner, bytes20 heirA, bytes20 heirB, int shareA, int silence, int grace) {
+    int constant MINER_FEE = 5500; // what a call that anyone may send takes from the vault: network fee + event coin
+    int constant KEEP = 1000;      // a call can never empty the vault's coin: this much always stays behind
+    int constant MIN_ESTATE = 2000;
+
+    Phase public phase;
+    int public checkIns;
+
+    event CheckedIn(int count);
+    event Warned();
+    event Released(int toHeirA, int toHeirB);
+
+    modifier onlyOwner(sig s) {
+        require(checkSig(s, owner), NotOwner());
+        _;
+    }
+
+    // The owner is alive: the clock restarts and any warning is cancelled.
+    function checkIn(sig s) public onlyOwner(s) {
+        this.phase = Phase.Watching;
+        this.checkIns = this.checkIns + 1;
+        emit CheckedIn(this.checkIns);
+    }
+
+    // Anyone, once the owner has been silent for `silence` blocks.
+    function warn() public {
+        require(this.phase == Phase.Watching, WrongPhase(this.phase));
+        require(this.age >= silence, "the owner was seen recently");
+        this.phase = Phase.Warned;
+        this.payMinerFee(MINER_FEE);
+        emit Warned();
+    }
+
+    // Anyone, once the warning is `grace` blocks old: each heir gets their share of the vault.
+    // It can run again later for coins that reach the vault after the release, by the same shares.
+    function release() public {
+        require(this.phase != Phase.Watching, "no warning yet");
+        require(this.age >= grace, "grace period not over");
+        int estate = this.balance - MINER_FEE - KEEP;
+        require(estate >= MIN_ESTATE, "nothing left to release");
+        int toA = estate * shareA / 100;
+        this.transfer(new LockingBytecodeP2PKH(heirA), toA);
+        this.transfer(new LockingBytecodeP2PKH(heirB), estate - toA);
+        this.phase = Phase.Released;
+        this.payMinerFee(MINER_FEE);
+        emit Released(toA, estate - toA);
+    }
+
+    // The owner can take everything back at any time. Their signature covers the outputs, so it pins the payout.
+    function close(sig s) selfdestruct {
+        require(checkSig(s, owner), NotOwner());
+    }
+}

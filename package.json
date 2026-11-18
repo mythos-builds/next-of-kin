@@ -1,0 +1,20 @@
+{
+  "name": "next-of-kin",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "postinstall": "node scripts/apply-pr4.mjs",
+    "test": "solidhat test",
+    "solidhat:compile": "solidhat compile",
+    "solidhat:typegen": "solidhat typegen",
+    "solidhat:test": "solidhat test",
+    "solidhat:deploy": "solidhat deploy",
+    "solidhat:clean": "solidhat clean"
+  },
+  "devDependencies": {
+    "@solidcash/solidhat": "^0.51.1",
+    "vitest": "^5.0.4",
+    "typescript": "^5.9.2"
+  }
+}

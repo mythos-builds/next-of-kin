@@ -1,0 +1,8 @@
+node_modules/
+artifacts/
+cache/
+typechain-types/
+.env
+vendor/solidcash-pr4/
+vendor/dist-backup-0.51.1/
+PLAN.md
