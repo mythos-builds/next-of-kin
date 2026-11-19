@@ -107,6 +107,102 @@
      "at": "2026-11-18T20:09:36.787Z"
     }
    ]
+  },
+  {
+   "vault": 4,
+   "category": "40f504ac510c764db0d3ebcde4f6bcc32504925f91ab6986c6f51c6b1131e1e2",
+   "sats": "40000",
+   "args": {
+    "owner": "03ea49aabd8a4c3bc53030289a121b32a87d4192143b87a25dd9229a554d6c39f1",
+    "heirA": "aa2a055a5f8a04544781e218cc25d376f37f0612",
+    "heirB": "339c8ce85029fb69f83f3b9a7245594a980e364f",
+    "shareA": 60,
+    "silence": 1,
+    "grace": 1
+   },
+   "addresses": {
+    "owner": "bitcoincash:qz4kcs0hq9tc5cv40ngg04wmzxrttxfcq54fvtlyyd",
+    "heirA": "bitcoincash:qz4z5p26t79qg4z8s83p3np96dm0xlcxzgmtnjdkj0",
+    "heirB": "bitcoincash:qqeeer8g2q5lk60c8uae5uj9t99fsr3kfunjzkl9x2"
+   },
+   "history": [
+    {
+     "step": "deploy",
+     "txid": "1732e944bff010373b7636c650cde2a162fdc6fc7250ac454bbbffaeda3e027f",
+     "at": "2026-11-19T01:09:37.278Z"
+    },
+    {
+     "step": "checkIn",
+     "txid": "34ad7c04e26762dba45bc659d510b1acb581affedd2df3e7ea7cfd06fcd0b4a3",
+     "at": "2026-11-19T01:09:43.616Z"
+    },
+    {
+     "step": "warn",
+     "txid": "539c0f394866d874b925a30eeffb1c0c612363e4558c0941013a45363bc0c0b9",
+     "at": "2026-11-19T01:23:07.007Z",
+     "by": "nobody (no key, no coin)"
+    }
+   ]
+  },
+  {
+   "vault": 5,
+   "category": "024cfdbb657f95f7c0d77a5d175c72c3705cb09f81fd0bb8edd3bff6c1fb8a3c",
+   "sats": "40000",
+   "args": {
+    "owner": "03ea49aabd8a4c3bc53030289a121b32a87d4192143b87a25dd9229a554d6c39f1",
+    "heirA": "aa2a055a5f8a04544781e218cc25d376f37f0612",
+    "heirB": "339c8ce85029fb69f83f3b9a7245594a980e364f",
+    "shareA": 60,
+    "silence": 1,
+    "grace": 1
+   },
+   "addresses": {
+    "owner": "bitcoincash:qz4kcs0hq9tc5cv40ngg04wmzxrttxfcq54fvtlyyd",
+    "heirA": "bitcoincash:qz4z5p26t79qg4z8s83p3np96dm0xlcxzgmtnjdkj0",
+    "heirB": "bitcoincash:qqeeer8g2q5lk60c8uae5uj9t99fsr3kfunjzkl9x2"
+   },
+   "history": [
+    {
+     "step": "deploy",
+     "txid": "e3406db45162d70656e5384847c034819fe8f3d5046c3edb50bb62198e8bb51f",
+     "at": "2026-11-19T01:10:05.573Z"
+    },
+    {
+     "step": "checkIn",
+     "txid": "907cfda2ff13a36085b2db6731cdd3229c8c23af47e2238f136ec80f8753151b",
+     "at": "2026-11-19T01:10:11.041Z"
+    }
+   ]
+  },
+  {
+   "vault": 6,
+   "category": "00ded7cc554b6b02766da7bbaf808f521f0bbb6891c5a765e0e02f8be8e12800",
+   "sats": "40000",
+   "args": {
+    "owner": "03ea49aabd8a4c3bc53030289a121b32a87d4192143b87a25dd9229a554d6c39f1",
+    "heirA": "aa2a055a5f8a04544781e218cc25d376f37f0612",
+    "heirB": "339c8ce85029fb69f83f3b9a7245594a980e364f",
+    "shareA": 60,
+    "silence": 1,
+    "grace": 1
+   },
+   "addresses": {
+    "owner": "bitcoincash:qz4kcs0hq9tc5cv40ngg04wmzxrttxfcq54fvtlyyd",
+    "heirA": "bitcoincash:qz4z5p26t79qg4z8s83p3np96dm0xlcxzgmtnjdkj0",
+    "heirB": "bitcoincash:qqeeer8g2q5lk60c8uae5uj9t99fsr3kfunjzkl9x2"
+   },
+   "history": [
+    {
+     "step": "deploy",
+     "txid": "67bc27e1633075196b0c5b025f234008b26da7c6d8080825d7da092d3cf20f55",
+     "at": "2026-11-19T01:10:25.320Z"
+    },
+    {
+     "step": "checkIn",
+     "txid": "7aa24184d92e6bd674e9355519de3a3ce8c579dfb0d77207f9623a408520d6c5",
+     "at": "2026-11-19T01:10:30.647Z"
+    }
+   ]
   }
  ]
 }
