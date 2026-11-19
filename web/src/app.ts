@@ -4,6 +4,7 @@ import { hexToBin } from '@bitauth/libauth';
 import { StatefulContract } from '@solidcash/solidcash/stateful';
 import { ElectrumNetworkProvider } from '@solidcash/solidcash/network/electrum';
 import artifact from '../../artifacts/solidcash/NextOfKin.json';
+import { stateDepth } from './depth';
 
 type Vault = {
   vault: number; category: string; sats: string;
@@ -49,8 +50,7 @@ async function read(v: Vault): Promise<Live> {
   if (!master) return { closed: true };
   const state = await sc.getState();
   const tip: number = await provider.getBlockHeight();
-  // A spend sent now enters block tip + 1: that is the depth BIP68 measures against `silence` and `grace`.
-  const depth = (master.height ?? 0) > 0 ? tip + 1 - master.height : 0;
+  const depth = stateDepth(master, tip);
   return { closed: false, phase: Number(state.phase), checkIns: BigInt(state.checkIns), balance: BigInt(await sc.satoshiContainer.getBalance()), depth };
 }
 
