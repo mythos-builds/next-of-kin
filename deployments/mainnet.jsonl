@@ -7,3 +7,10 @@
 {"vault":3,"step":"deploy","txid":"0c963454ec140ffe398a7542a6a821696e73acfa01b529c44d6dc0fd94096313","at":"2026-11-18T20:09:31.702Z","tip":977931,"category":"4a13fa00fab43922d733d91a9c0e0e0415dc6011c589d11f6a94d08609268c38","sats":"40000"}
 {"vault":3,"step":"checkIn","txid":"b447caaa026abe971e94067cb5f05c9be1e7174d7a62fb309a2537d30726c5bf","at":"2026-11-18T20:09:36.787Z","tip":977931}
 {"vault":1,"step":"release","txid":"4432d3521b4cd30abcd21d6e8b8d017625e27ec53c93aed37e5ca3c9cbba4e15","at":"2026-11-18T20:09:57.639Z","tip":977932,"by":"nobody (no key, no coin)"}
+{"vault":4,"step":"deploy","txid":"1732e944bff010373b7636c650cde2a162fdc6fc7250ac454bbbffaeda3e027f","at":"2026-11-19T01:09:37.278Z","tip":977960,"category":"40f504ac510c764db0d3ebcde4f6bcc32504925f91ab6986c6f51c6b1131e1e2","sats":"40000"}
+{"vault":4,"step":"checkIn","txid":"34ad7c04e26762dba45bc659d510b1acb581affedd2df3e7ea7cfd06fcd0b4a3","at":"2026-11-19T01:09:43.616Z","tip":977960}
+{"vault":5,"step":"deploy","txid":"e3406db45162d70656e5384847c034819fe8f3d5046c3edb50bb62198e8bb51f","at":"2026-11-19T01:10:05.573Z","tip":977960,"category":"024cfdbb657f95f7c0d77a5d175c72c3705cb09f81fd0bb8edd3bff6c1fb8a3c","sats":"40000"}
+{"vault":5,"step":"checkIn","txid":"907cfda2ff13a36085b2db6731cdd3229c8c23af47e2238f136ec80f8753151b","at":"2026-11-19T01:10:11.041Z","tip":977960}
+{"vault":6,"step":"deploy","txid":"67bc27e1633075196b0c5b025f234008b26da7c6d8080825d7da092d3cf20f55","at":"2026-11-19T01:10:25.320Z","tip":977960,"category":"00ded7cc554b6b02766da7bbaf808f521f0bbb6891c5a765e0e02f8be8e12800","sats":"40000"}
+{"vault":6,"step":"checkIn","txid":"7aa24184d92e6bd674e9355519de3a3ce8c579dfb0d77207f9623a408520d6c5","at":"2026-11-19T01:10:30.647Z","tip":977960}
+{"vault":4,"step":"warn","txid":"539c0f394866d874b925a30eeffb1c0c612363e4558c0941013a45363bc0c0b9","at":"2026-11-19T01:23:07.007Z","tip":977961,"by":"nobody (no key, no coin)"}

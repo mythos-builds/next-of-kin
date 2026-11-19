@@ -13,9 +13,9 @@ their fixed share. Funds, never keys.
 
 Built for [BCH BLAZE 2026](https://dorahacks.io/hackathon/bchblaze2026) (SolidCash bounty) by one human and an AI agent.
 
-**Live demo: https://mythos-builds.github.io/next-of-kin/** reads the vaults below straight from BCH mainnet. Vault 3
-is left watching: anyone can sound its warning, then release it to its heirs a block later, from the page, with no
-wallet.
+**Live demo: https://mythos-builds.github.io/next-of-kin/** reads the vaults below straight from BCH mainnet. Vault 4
+is already warned: anyone can release it and its heirs are paid at once. Vaults 3, 5 and 6 are watching: anyone can
+sound the warning, then release a block later. All from the page, with no wallet.
 
 ## How it works
 
@@ -46,6 +46,16 @@ block so a whole life fits in half an hour.
 | Owner checks in | [`137a5b9b…`](https://explorer.salemkode.com/tx/137a5b9b2a9ff7355f74955bf6c6d6841971e3b2b10e9d350314c653f84dd177) |
 | Warning, sent with **no key and no coin** | [`4096ea27…`](https://explorer.salemkode.com/tx/4096ea27fd0c608f0e0496a78f24aa42ca2fb59b95ffb16f4701f0d903fca006) |
 | Release, sent with no key and no coin: heir A gets 16,800 sat, heir B 11,200 | [`4432d352…`](https://explorer.salemkode.com/tx/4432d3521b4cd30abcd21d6e8b8d017625e27ec53c93aed37e5ca3c9cbba4e15) |
+
+**Vault 4: warned, ready to release.** 40,000 sat, deployed [`1732e944…`](https://explorer.salemkode.com/tx/1732e944bff010373b7636c650cde2a162fdc6fc7250ac454bbbffaeda3e027f),
+owner checked in [`34ad7c04…`](https://explorer.salemkode.com/tx/34ad7c04e26762dba45bc659d510b1acb581affedd2df3e7ea7cfd06fcd0b4a3),
+warning sent by nobody [`539c0f39…`](https://explorer.salemkode.com/tx/539c0f394866d874b925a30eeffb1c0c612363e4558c0941013a45363bc0c0b9).
+Press Release on the [demo page](https://mythos-builds.github.io/next-of-kin/) and watch the heirs get paid.
+
+**Vaults 5 and 6: watching, like vault 3.** 40,000 sat each: vault 5 deployed [`e3406db4…`](https://explorer.salemkode.com/tx/e3406db45162d70656e5384847c034819fe8f3d5046c3edb50bb62198e8bb51f)
+and checked in [`907cfda2…`](https://explorer.salemkode.com/tx/907cfda2ff13a36085b2db6731cdd3229c8c23af47e2238f136ec80f8753151b), vault 6 deployed
+[`67bc27e1…`](https://explorer.salemkode.com/tx/67bc27e1633075196b0c5b025f234008b26da7c6d8080825d7da092d3cf20f55) and checked in
+[`7aa24184…`](https://explorer.salemkode.com/tx/7aa24184d92e6bd674e9355519de3a3ce8c579dfb0d77207f9623a408520d6c5).
 
 **Vault 3: yours to press.** 40,000 sat, deployed [`0c963454…`](https://explorer.salemkode.com/tx/0c963454ec140ffe398a7542a6a821696e73acfa01b529c44d6dc0fd94096313),
 owner checked in [`b447caaa…`](https://explorer.salemkode.com/tx/b447caaa026abe971e94067cb5f05c9be1e7174d7a62fb309a2537d30726c5bf),
