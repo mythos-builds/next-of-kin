@@ -16,7 +16,9 @@ type DestroyOptions = Parameters<typeof StatefulContract.selfdestructTo>[0];
  * The stock helper (0.51.1) adds every event NFT of the contract to the destroy transaction, so one event younger
  * than 144 blocks makes the whole transaction non-BIP68-final, and the owner cannot close the vault for a day after
  * any check-in. Its docs say unexpired events should not block destruction; this does what the docs say: young event
- * NFTs stay at their addresses, and anyone can clean them up once their delay is over.
+ * NFTs stay at their addresses, and anyone can clean them up once their delay is over. A provider lists a coin's
+ * confirmation height as `blockHeight` (Electrum does); one that lists none, like the mock, keeps every event NFT out.
+ * Upstream fix: https://github.com/solidcash/solidcash/pull/13
  */
 export async function closeVault(options: DestroyOptions) {
   const { provider, contract } = options as any;
@@ -28,7 +30,7 @@ export async function closeVault(options: DestroyOptions) {
       : getEventNftAddress(contract.inner, contract.categoryId, ev.signature));
     eventAddresses.add(getEventNftContinuationAddress(contract.inner, contract.categoryId, ev.signature));
   }
-  const spendable = (u: any) => (u.height ?? 0) > 0 && tip + 1 - u.height >= EVENT_NFT_DELAY;
+  const spendable = (u: any) => (u.blockHeight ?? 0) > 0 && tip + 1 - u.blockHeight >= EVENT_NFT_DELAY;
   const view = new Proxy(provider, {
     get(target, prop) {
       if (prop === 'getUtxos') {

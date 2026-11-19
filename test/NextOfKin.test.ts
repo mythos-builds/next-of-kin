@@ -1,8 +1,9 @@
 import { binToHex, cashAddressToLockingBytecode, decodeTransaction, encodeTransaction, hexToBin } from '@bitauth/libauth';
 import { SignatureTemplate } from '@solidcash/solidcash';
-import { StatefulContract } from '@solidcash/solidcash/stateful';
+import { StatefulContract, getEventNftAddress } from '@solidcash/solidcash/stateful';
 import { ethers, loadFixture, network } from '@solidcash/testing';
 import { expect } from '@solidcash/testing/chai';
+import { sha256 } from '@solidcash/utils';
 import { closeVault } from '../lib/close.js';
 
 const SILENCE = 10n;
@@ -229,6 +230,44 @@ describe('NextOfKin: the owner', () => {
     expect(gained).to.equal(result.totalReclaimed);
     expect(gained > VAULT - 5_000n).to.equal(true); // the vault, its state coins, minus one network fee
     expect(await balanceOf(handle().tokenAddress)).to.equal(0n);
+  });
+
+  /** The mock as an Electrum server lists it: each coin with its confirmation height, and the tip of the same index. */
+  const withHeights = (p: any) => new Proxy(p, {
+    get(target, prop) {
+      if (prop === 'getBlockHeight') return async () => target.indexer.getTip().height;
+      if (prop === 'getUtxos') {
+        return async (address: string) => {
+          const heights = new Map(target.indexer.getUtxos(binToHex(sha256(hexToBin(lockOf(address)))))
+            .map((entry: any) => [`${entry.outpoint.txid}:${entry.outpoint.vout}`, entry.height]));
+          return (await target.getUtxos(address)).map((u: any) => ({ ...u, blockHeight: heights.get(`${u.txid}:${u.vout}`) }));
+        };
+      }
+      const value = Reflect.get(target, prop, target);
+      return typeof value === 'function' ? value.bind(target) : value;
+    },
+  });
+  const checkInNfts = async (contract: any) => provider().getUtxos(getEventNftAddress(contract.inner, contract.categoryId,
+    contract.inner.artifact.events.find((ev: any) => ev.name === 'CheckedIn').signature));
+  const closeAsOwner = (p: any, contract: any, owner: any, sig: any) => closeVault({
+    provider: p, contract, destroyFunctionName: 'close', destroyFunctionArgs: [sig(owner)], recipient: owner.address,
+  } as any);
+
+  it('with heights listed, as Electrum lists them, the young event NFT stays and the vault still closes', async () => {
+    const { kin, owner, sig, handle } = await loadFixture(deployFixture);
+    await kin.checkIn(sig(owner)).send();
+    const result: any = await closeAsOwner(withHeights(provider()), handle(), owner, sig);
+    expect(result.txs.length).to.equal(1);
+    expect((await checkInNfts(handle())).length).to.equal(1);
+  });
+
+  it('once the event delay has passed, closing also sweeps the expired event NFT', async () => {
+    const { kin, owner, sig, handle } = await loadFixture(deployFixture);
+    await kin.checkIn(sig(owner)).send();
+    expect((await checkInNfts(handle())).length).to.equal(1);
+    await mineBlocks(144);
+    await closeAsOwner(withHeights(provider()), handle(), owner, sig);
+    expect((await checkInNfts(handle())).length).to.equal(0);
   });
 
   it('nobody else can close the vault', async () => {

@@ -135,7 +135,7 @@ The bounty asks builders to report and fix what they hit. Status in [`UPSTREAM.m
 | # | What we hit | Here |
 | --- | --- | --- |
 | F1 | `npm create @solidcash/solidhat` fails without a GitHub SSH key: the lockfile resolves the libauth fork as `git+ssh` | `scripts/install.sh` |
-| F3 | `StatefulContract.selfdestructTo` adds every event NFT, unexpired ones too, so a destroy is non-BIP68-final for 144 blocks after any event; the docs say unexpired events should not block | [`lib/close.ts`](lib/close.ts) |
+| F3 | `StatefulContract.selfdestructTo` adds every event NFT, unexpired ones too, so a destroy is non-BIP68-final for 144 blocks after any event; the docs say unexpired events should not block. **Fix: [PR #13](https://github.com/solidcash/solidcash/pull/13)** | [`lib/close.ts`](lib/close.ts) |
 | F4 | A destination-pinned `selfdestruct(addr)` caps the fee below 2,000 sat, but our destroy transaction is over 3,500 bytes: no fee is both under the cap and over the relay minimum | the modifier form, owner-signed |
 | F5 | A release with nothing left is refused by the SDK's transfer derivation ("exceeds satoshi container balance") before the `require` message can be reported | test accepts either |
 | F7 | The mock's `mine(n)` counts from its own height, which auto-mined sends do not move: after k sends it adds n - k blocks | `mineBlocks()` in the tests |

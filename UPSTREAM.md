@@ -21,10 +21,13 @@ What building Next of Kin on SolidCash 0.51.1 ran into, with where it lives upst
   younger than 144 blocks makes the whole destroy non-final. The docs (`language/selfdestruct.md`) say: "Unexpired
   event NFTs do not block master destruction".
 - **Here:** [`lib/close.ts`](lib/close.ts) calls the same helper through a provider view that hides event NFTs
-  younger than 144 blocks; they stay at their addresses and anyone can sweep them later. Tested on mock and used on
-  mainnet (vault 2 closed seconds after a check-in).
-- **Upstream fix idea:** in the event discovery, keep a coin only when `height > 0 && tip + 1 - height >= 144`. The
-  mock provider's `getUtxos` does not report `height` today, so it needs that too to be testable.
+  younger than 144 blocks; they stay at their addresses and anyone can sweep them later. Used on mainnet (vault 2
+  closed seconds after a check-in). Its first version read `height`, but the SDK lists a coin's height as
+  `blockHeight`, so it hid every event NFT, expired ones too: fixed on 2026-11-18, with two tests that list heights
+  the way Electrum does (a young event NFT stays and the vault closes; after 144 blocks the close sweeps it).
+- **Upstream fix:** [solidcash/solidcash#13](https://github.com/solidcash/solidcash/pull/13) (ours) keeps an event NFT
+  in the destroy only when the next block can spend it, `height > 0 && tip + 1 - height >= 144`, and keeps a coin
+  listed without a height as before (the mock lists none). Two tests list the mock's heights as Electrum does.
 
 ## F4 · A destination-pinned `selfdestruct(addr)` cannot relay once its transaction is over ~2 kB
 
