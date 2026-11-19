@@ -87,7 +87,7 @@ then left alone. Open the [demo page](https://mythos-builds.github.io/next-of-ki
 
 ```sh
 ./scripts/install.sh      # npm ci (see "Found while building", F1), then applies vendor/pr4-overlay
-npx solidhat test         # 13 tests, solidhat on its mock network
+npx solidhat test         # 15 tests, solidhat on its mock network
 ```
 
 - the clock: a warning is refused one block early and accepted on the block; the grace period counts from the
