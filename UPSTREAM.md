@@ -74,7 +74,9 @@ What building Next of Kin on SolidCash 0.51.1 ran into, with where it lives upst
   "Paying the miner from the container") say "The caller needs no coin".
 - **Here:** [`scripts/press.ts`](scripts/press.ts) uses an instance with a provider and no signer; the mainnet warning
   `4096ea27…` was sent that way.
-- **Upstream fix idea:** skip the check when the assembled transaction already pays its own fee.
+- **Upstream fix:** [solidcash/solidcash#12](https://github.com/solidcash/solidcash/pull/12) (ours) skips the check for an
+  entry that pays its own miner fee, the condition the funder accounting already uses to leave the fee signer unset. It
+  adds a regression test, and a test that a call needing the caller's coin is still refused.
 
 ## PR #4 (not ours)
 

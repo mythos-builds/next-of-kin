@@ -140,7 +140,7 @@ The bounty asks builders to report and fix what they hit. Status in [`UPSTREAM.m
 | F5 | A release with nothing left is refused by the SDK's transfer derivation ("exceeds satoshi container balance") before the `require` message can be reported | test accepts either |
 | F7 | The mock's `mine(n)` counts from its own height, which auto-mined sends do not move: after k sends it adds n - k blocks | `mineBlocks()` in the tests |
 | F8 | The genesis coin is chosen without counting `initialBalance`, so a deploy can pick a small vout-0 coin and fail with "Insufficient funding" while a big enough one exists. **Fix: [PR #11](https://github.com/solidcash/solidcash/pull/11)** | `fundingUtxo` named in `scripts/lifecycle.ts` |
-| F9 | A call the vault pays for (`payMinerFee`) is refused for a caller with no coin at all ("without a token-free fee UTXO"); the docs say the caller needs no coin | keyless handle in `scripts/press.ts` |
+| F9 | A call the vault pays for (`payMinerFee`) is refused for a caller with no coin at all ("without a token-free fee UTXO"); the docs say the caller needs no coin. **Fix: [PR #12](https://github.com/solidcash/solidcash/pull/12)** | keyless handle in `scripts/press.ts` |
 
 ## Credits
 
