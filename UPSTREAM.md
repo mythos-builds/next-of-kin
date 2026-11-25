@@ -25,7 +25,7 @@ What building Next of Kin on SolidCash 0.51.1 ran into, with where it lives upst
   closed seconds after a check-in). Its first version read `height`, but the SDK lists a coin's height as
   `blockHeight`, so it hid every event NFT, expired ones too: fixed on 2026-11-18, with two tests that list heights
   the way Electrum does (a young event NFT stays and the vault closes; after 144 blocks the close sweeps it).
-- **Upstream fix:** [solidcash/solidcash#13](https://github.com/solidcash/solidcash/pull/13) (ours) keeps an event NFT
+- **Upstream fix:** [solidcash/solidcash#13](https://github.com/solidcash/solidcash/pull/13) (ours, merged 2026-11-25) keeps an event NFT
   in the destroy only when the next block can spend it, `height > 0 && tip + 1 - height >= 144`, and keeps a coin
   listed without a height as before (the mock lists none). Two tests list the mock's heights as Electrum does.
 
@@ -65,7 +65,7 @@ What building Next of Kin on SolidCash 0.51.1 ran into, with where it lives upst
   `selectGenesisFundingUtxo(…, poolSatoshis)` without `overrides.initialBalance`; the selection then takes the
   freshest vout-0 coin that covers the records and fee only, and the deployment spends that coin alone.
 - **Here:** [`scripts/lifecycle.ts`](scripts/lifecycle.ts) names the largest vout-0 coin as `fundingUtxo`.
-- **Upstream fix:** [solidcash/solidcash#11](https://github.com/solidcash/solidcash/pull/11) (ours) adds the initial
+- **Upstream fix:** [solidcash/solidcash#11](https://github.com/solidcash/solidcash/pull/11) (ours, merged 2026-11-25) adds the initial
   balance to the floor passed to `selectGenesisFundingUtxo`, with a regression test.
 
 ## F9 · A vault-paid call is refused for a caller with no coin
@@ -77,7 +77,7 @@ What building Next of Kin on SolidCash 0.51.1 ran into, with where it lives upst
   "Paying the miner from the container") say "The caller needs no coin".
 - **Here:** [`scripts/press.ts`](scripts/press.ts) uses an instance with a provider and no signer; the mainnet warning
   `4096ea27…` was sent that way.
-- **Upstream fix:** [solidcash/solidcash#12](https://github.com/solidcash/solidcash/pull/12) (ours) skips the check for an
+- **Upstream fix:** [solidcash/solidcash#12](https://github.com/solidcash/solidcash/pull/12) (ours, merged 2026-11-25) skips the check for an
   entry that pays its own miner fee, the condition the funder accounting already uses to leave the fee signer unset. It
   adds a regression test, and a test that a call needing the caller's coin is still refused.
 
